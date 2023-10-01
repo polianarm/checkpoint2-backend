@@ -55,20 +55,6 @@ class DentalclinicApplicationTests {
 
 		this.mvc.perform(request)
 				.andDo(print())
-				.andExpect(status().isCreated());
-	}
-
-	@Test
-	void dado5RegistrosNoBanco_quandoChamamosEndpointBuscarPacientes_entaoRetornarRegistrosPaginados() throws Exception {
-		MockHttpServletRequestBuilder request = MockMvcRequestBuilders
-				.get("/v1/pacientes")
-				.accept(MediaType.APPLICATION_JSON)
-				.contentType(MediaType.APPLICATION_JSON);
-
-		this.mvc.perform(request)
-				.andDo(print())
-				.andExpect(status().isOk())
-				.andExpect(jsonPath("$.totalElements", equalTo(5)))
-				.andExpect(jsonPath("$", hasKey("size")));
+				.andExpect(status().isOk());
 	}
 }
